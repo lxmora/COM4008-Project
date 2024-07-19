@@ -1,3 +1,4 @@
 # COM4008-Project
 
-COM4008 Video Game Project Repo
+Daniel Baradaran Dehkharghani- 22319601
+COM4008 Video Game Project Report
