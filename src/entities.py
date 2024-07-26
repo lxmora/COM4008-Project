@@ -11,7 +11,7 @@ class Wall(Entity):
     def __init__(self):
         super().__init__()
 
-class Ballon(Entity):
+class Balloon(Entity):
     def __init__(self):
         super().__init__()
         self.velocity=None
