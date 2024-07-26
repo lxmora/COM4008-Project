@@ -4,7 +4,7 @@ import collision
 import pygame
 
 pygame.init()
-screen = pygame.display.set_mode((960, 720))
+screen = pygame.display.set_mode((480, 720))
 clock = pygame.time.Clock()
 running = True
 
@@ -19,6 +19,10 @@ while running:
 
     screen.fill("black")
 
+
+    pygame.draw.circle(screen,("white"), (200, 200), 75)
+
+    pygame.display.flip()
 
     clock.tick(60)
 
