@@ -1,6 +1,5 @@
 from constants import *
 import entities
-import collision
 import pygame
 
 pygame.init()

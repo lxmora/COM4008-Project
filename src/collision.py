@@ -1,3 +1,6 @@
+#removed after learning pygame can handle collisions on its own
+
+'''
 from constants import *
 import entities
 import pygame
@@ -23,3 +26,4 @@ def aabb(upperA, lowerA, upperB, lowerB):
 def handleCollison(entityA, entityB):
     if type(entityA)==entities.Ballon and type(entityB)==entities.Wall:
         return GAMEEND
+'''

@@ -2,11 +2,9 @@ from constants import *
 import pygame
 
 class Entity():
-    def __init__(self):
-        self.x=None
-        self.y=None
-        self.height=None
-        self.width=None 
+    def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect):
+        self.drawbox=drawbox
+        self.collisionbox=collisionbox
         self.image=None
 
 class Wall(Entity):
