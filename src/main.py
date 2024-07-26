@@ -7,8 +7,6 @@ screen = pygame.display.set_mode((480, 720))
 clock = pygame.time.Clock()
 running = True
 
-ballon = entities.Ballon()
-
 while running:
 
     for event in pygame.event.get():
@@ -16,10 +14,7 @@ while running:
             running = False
 
 
-    screen.fill("black")
-
-
-    pygame.draw.circle(screen,("white"), (200, 200), 75)
+    screen.fill((100,100,200))
 
     pygame.display.flip()
 
