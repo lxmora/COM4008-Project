@@ -27,7 +27,7 @@ class Balloon(Entity):
         self.drawbox.x += self.velocity
 
 class Obstacle(Entity):
-    def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect):
+    def __init__(self):
         self.size = (random.randint(1, 5))
         image=SPIKESPRITES[self.size]
         super().__init__(drawbox , collisionbox, image)
