@@ -16,10 +16,10 @@ class Balloon(Entity):
         super().__init__(drawbox , collisionbox, image)
         self.velocity=None
 
-    def moveLeft():
+    def moveLeft(self):
         self.velocity -= BALLOONSPEED
 
-    def moveRight():
+    def moveRight(self):
         self.velocity += BALLOONSPEED
 
 class Obstacle(Entity):
