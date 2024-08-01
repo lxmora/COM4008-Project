@@ -17,6 +17,10 @@ while running:
         if event.type == pygame.QUIT:
             running = False
 
+    #Position Updates
+
+
+
     #Collison handling
 
     for obstacle in obstacles:
