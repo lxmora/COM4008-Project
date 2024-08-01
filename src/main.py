@@ -1,6 +1,7 @@
 from constants import *
 import entities
 import pygame
+import math
 
 pygame.init()
 screen = pygame.display.set_mode(RESOLUTION)
@@ -21,6 +22,8 @@ def drawEntities():
 
     pygame.display.flip()
 
+def scoreToSpeed(self, score):
+    return math.sqrt(score)
 
 while running:
 
@@ -30,7 +33,9 @@ while running:
 
     #Position Updates
 
-
+    balloon.updatePosition()
+    for obstacle in obstacle:
+        obstacle.updatePosition(scoreToSpeed(score))
 
     #Collison handling
 

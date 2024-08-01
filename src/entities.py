@@ -22,6 +22,10 @@ class Balloon(Entity):
     def moveRight(self):
         self.velocity += BALLOONSPEED
 
+    def updatePosition(self):
+        self.collisionbox.x += self.velocity
+        self.drawbox.x += self.velocity
+
 class Obstacle(Entity):
     def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect):
         self.size = (random.randint(1, 5))
@@ -35,6 +39,12 @@ class Obstacle(Entity):
 
         self.drawbox.x = movePosition
         self.collisionbox.x = movePosition
+    
+    def updatePosition(self, speed):
+        self.collisionbox.y += speed
+        self.drawbox.y += speed
+
+
 
         
 
