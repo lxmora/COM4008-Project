@@ -22,8 +22,8 @@ def drawEntities():
 
     pygame.display.flip()
 
-def scoreToSpeed(self, score):
-    return math.sqrt(score)
+def scoreToSpeed(score):
+    return math.sqrt(score)/2
 
 while running:
 
@@ -34,7 +34,7 @@ while running:
     #Position Updates
 
     balloon.updatePosition()
-    for obstacle in obstacle:
+    for obstacle in obstacles:
         obstacle.updatePosition(scoreToSpeed(score))
 
     #Collison handling
@@ -53,8 +53,9 @@ while running:
     if obstacleTimer == OBSTACLECOOLDOWN: 
         obstacles.append(entities.Obstacle())
         obstacleTimer = 0 
+        obstacles[-1].randomPosition()
     
-
+    score += 1
     
 
     #Movement handling

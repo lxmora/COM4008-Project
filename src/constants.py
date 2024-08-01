@@ -12,4 +12,4 @@ BALLOONSTARTPOSITION = ((RESOLUTION[0]/2)-(BALLOONSIZE[0]/2),BALLOONHEIGHT)
 BALLOONSPRITE = pygame.transform.scale(pygame.image.load("assets/balloon.png"),BALLOONSIZE)
 SPIKESPRITES = [pygame.image.load("assets/spike"+str(size)+".png") for size in range(1,6)]
 BALLOONSPEED = 20
-OBSTACLECOOLDOWN = 360
+OBSTACLECOOLDOWN = 120

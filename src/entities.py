@@ -14,7 +14,7 @@ class Wall(Entity):
 class Balloon(Entity):
     def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect, image):
         super().__init__(drawbox , collisionbox, image)
-        self.velocity=None
+        self.velocity=0
 
     def moveLeft(self):
         self.velocity -= BALLOONSPEED
@@ -29,8 +29,10 @@ class Balloon(Entity):
 class Obstacle(Entity):
     def __init__(self):
         self.size = (random.randint(1, 5))
-        image=SPIKESPRITES[self.size]
-        super().__init__(drawbox , collisionbox, image)
+        image=SPIKESPRITES[self.size-1]
+        dbox=pygame.Rect((0,0),(image.get_width(),image.get_height()))
+        cbox=pygame.Rect((0,0),(image.get_width(),image.get_height()))
+        super().__init__(dbox , cbox, image)
 
 
     def randomPosition(self):
