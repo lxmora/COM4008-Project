@@ -3,7 +3,7 @@ import entities
 import pygame
 
 pygame.init()
-screen = pygame.display.set_mode((480, 720))
+screen = pygame.display.set_mode(RESOLUTION)
 clock = pygame.time.Clock()
 running = True
 
@@ -14,10 +14,10 @@ while running:
             running = False
 
 
-    screen.fill((100,100,200))
+    screen.fill(BACKGROUNDCOLOR)
 
     pygame.display.flip()
 
-    clock.tick(60)
+    clock.tick(FRAMERATE)
 
 pygame.quit()
