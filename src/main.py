@@ -7,6 +7,9 @@ screen = pygame.display.set_mode(RESOLUTION)
 clock = pygame.time.Clock()
 running = True
 
+obstacleTimer = 0
+score = 0
+
 boundarybox = pygame.Rect((0,0),RESOLUTION)
 balloon = entities.Balloon(pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),BALLOONSPRITE)
 obstacles = []
@@ -38,7 +41,7 @@ while running:
         balloon.velocity *= -1
 
 
-    #Obstacle Generation
+    #Obstacle Generation & Deletion
 
     
 
