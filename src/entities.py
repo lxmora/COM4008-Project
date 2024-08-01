@@ -1,5 +1,5 @@
 from constants import *
-import pygame
+import pygame, random
 
 class Entity():
     def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect, image):
@@ -24,4 +24,5 @@ class Balloon(Entity):
 
 class Obstacle(Entity):
     def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect, image):
-        super().__init__(drawbox , collisionbox, image)
+         super().__init__(drawbox , collisionbox, image)
+         self.size = (random.randint(1, 5))
