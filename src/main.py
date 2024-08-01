@@ -28,11 +28,16 @@ while running:
 
     #Obstacle Generation
 
-
+    
 
     #Movement handling
 
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_LEFT:
+            pass
 
+        if event.key == pygame.K_RIGHT:
+            pass
 
     screen.fill(BACKGROUNDCOLOR)
 
