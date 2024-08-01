@@ -23,7 +23,7 @@ def drawEntities():
     pygame.display.flip()
 
 def scoreToSpeed(score):
-    return math.sqrt(score)/2
+    return math.sqrt(score)/FALLSPEEDDIVISOR
 
 while running:
 
@@ -62,10 +62,10 @@ while running:
 
     if event.type == pygame.KEYDOWN:
         if event.key == pygame.K_LEFT:
-            pass
+            balloon.moveLeft()
 
         if event.key == pygame.K_RIGHT:
-            pass
+            balloon.moveRight()
 
     screen.fill(BACKGROUNDCOLOR)
 
