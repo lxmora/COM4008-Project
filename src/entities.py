@@ -17,10 +17,10 @@ class Balloon(Entity):
         self.velocity=None
 
     def moveLeft():
-        pass
+        self.velocity -= BALLOONSPEED
 
     def moveRight():
-        pass
+        self.velocity += BALLOONSPEED
 
 class Obstacle(Entity):
     def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect, image):
