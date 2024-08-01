@@ -43,6 +43,13 @@ while running:
 
     #Obstacle Generation & Deletion
 
+    obstacleTimer += 1 
+
+    if obstacleTimer == OBSTACLECOOLDOWN: 
+        obstacles.append(entities.Obstacle())
+        obstacleTimer = 0 
+    
+
     
 
     #Movement handling
