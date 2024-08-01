@@ -11,6 +11,14 @@ boundarybox = pygame.Rect((0,0),RESOLUTION)
 balloon = entities.Balloon(pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),BALLOONSPRITE)
 obstacles = []
 
+def drawEntities():
+    screen.blit(balloon.image,balloon.drawbox)
+    for obstacle in obstacles:
+        screen.blit(obstacle.image,obstacle.drawbox)
+
+    pygame.display.flip()
+
+
 while running:
 
     for event in pygame.event.get():
@@ -45,13 +53,7 @@ while running:
 
     screen.fill(BACKGROUNDCOLOR)
 
-    #Entity Drawing
-
-    screen.blit(balloon.image,balloon.drawbox)
-    for obstacle in obstacles:
-        screen.blit(obstacle.image,obstacle.drawbox)
-
-    pygame.display.flip()
+    drawEntities()
 
     clock.tick(FRAMERATE)
 
