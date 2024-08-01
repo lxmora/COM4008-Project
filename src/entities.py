@@ -26,3 +26,15 @@ class Obstacle(Entity):
     def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect, image):
          super().__init__(drawbox , collisionbox, image)
          self.size = (random.randint(1, 5))
+
+    def randomPosition(self):
+    
+        movePosition= random.randrange(0,RESOLUTION[0]- self.drawbox.width)
+
+        self.drawbox.x = movePosition
+        self.collisionbox.x = movePosition
+
+        
+
+
+        
