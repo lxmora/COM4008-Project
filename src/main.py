@@ -12,7 +12,7 @@ obstacleTimer = 0
 score = 0
 
 boundarybox = pygame.Rect((0,0),RESOLUTION)
-balloon = entities.Balloon(pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),BALLOONSPRITE)
+balloon = entities.Balloon(pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),pygame.Rect(BALLOONCBOXSTARTPOSITION,BALLOONCBOXSIZE),BALLOONSPRITE)
 obstacles = []
 
 def drawEntities():
