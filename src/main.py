@@ -15,10 +15,14 @@ boundarybox = pygame.Rect((0,0),RESOLUTION)
 balloon = entities.Balloon(pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),pygame.Rect(BALLOONCBOXSTARTPOSITION,BALLOONCBOXSIZE),BALLOONSPRITE)
 obstacles = []
 
+font = pygame.font.SysFont(FONTSTYLE,FONTSIZE)
+
 def drawEntities():
     screen.blit(balloon.image,balloon.drawbox)
     for obstacle in obstacles:
         screen.blit(obstacle.image,obstacle.drawbox)
+    #screen.fill((0,255,0),balloon.collisionbox,special_flags=1) #collision box visualization
+    screen.blit(font.render("Score:"+str(score),True,(0,0,0)),(10,RESOLUTION[1]-(40)))
 
     pygame.display.flip()
 
