@@ -2,50 +2,48 @@ from constants import *
 import entities
 import pygame
 import math
+from user_interface import UserInterface
 
 pygame.init()
 screen = pygame.display.set_mode(RESOLUTION)
 clock = pygame.time.Clock()
 running = True
+ui = UserInterface()
 
 obstacleTimer = 0
-score = 0
 
 boundarybox = pygame.Rect((0,0),RESOLUTION)
 balloon = entities.Balloon(pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),pygame.Rect(BALLOONCBOXSTARTPOSITION,BALLOONCBOXSIZE),BALLOONSPRITE)
 obstacles = []
 
-font = pygame.font.SysFont(FONTSTYLE,FONTSIZE)
+
 
 def drawEntities():
     screen.blit(balloon.image,balloon.drawbox)
     for obstacle in obstacles:
         screen.blit(obstacle.image,obstacle.drawbox)
     #screen.fill((0,255,0),balloon.collisionbox,special_flags=1) #collision box visualization
-    screen.blit(font.render("Score:"+str(score),True,(0,0,0)),(10,RESOLUTION[1]-(40)))
-
-    pygame.display.flip()
-
-def scoreToSpeed(score):
-    return math.sqrt(score)/FALLSPEEDDIVISOR
+    screen.blit(ui.font.render("Score:"+str(ui.score),True,(0,0,0)),(10,RESOLUTION[1]-(40)))
 
 while running:
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
+        if event.type == GAMEEND:
+            running = False
 
     #Position Updates
 
     balloon.updatePosition()
     for obstacle in obstacles:
-        obstacle.updatePosition(scoreToSpeed(score))
+        obstacle.updatePosition(ui.speed)
 
     #Collison handling
 
     for obstacle in obstacles:
         if obstacle.collisionbox.colliderect(balloon.collisionbox):
-            running = False
+            pygame.event.post(GAMEENDEVENT)
     if not boundarybox.contains(balloon.collisionbox):
         balloon.velocity *= -1
 
@@ -59,7 +57,7 @@ while running:
         obstacleTimer = 0 
         obstacles[-1].randomPosition()
     
-    score += 1
+    ui.score += 1
     
 
     #Movement handling
@@ -74,6 +72,8 @@ while running:
     screen.fill(BACKGROUNDCOLOR)
 
     drawEntities()
+
+    pygame.display.flip()
 
     clock.tick(FRAMERATE)
 
