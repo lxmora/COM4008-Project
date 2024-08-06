@@ -24,6 +24,7 @@ class Balloon(Entity):
 
     def updatePosition(self):
         self.collisionbox.x += self.velocity
+        self.velocity *= 0.99
         self.drawbox.update(self.drawbox.clamp(self.collisionbox))
 
 class Obstacle(Entity):
