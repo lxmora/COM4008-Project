@@ -7,7 +7,7 @@ class UserInterface():
         self.score = 0
         self.font = pygame.font.SysFont(FONTSTYLE,FONTSIZE)
         self.speed = 0
-    self.top_score = 0  # Add a variable to store the top score
+        self.top_score = 0  # Add a variable to store the top score
 
     def increaseScore(self, ammount : int = DEFAULTSCOREGAIN):
         self.score += ammount
