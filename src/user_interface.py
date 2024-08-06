@@ -7,6 +7,7 @@ class UserInterface():
         self.score = 0
         self.font = pygame.font.SysFont(FONTSTYLE,FONTSIZE)
         self.speed = 0
+    self.top_score = 0  # Add a variable to store the top score
 
     def increaseScore(self, ammount : int = DEFAULTSCOREGAIN):
         self.score += ammount
@@ -19,3 +20,11 @@ class UserInterface():
 
     def startGame(self):
         pygame.event.post(GAMESTART)
+
+#update top score 
+    def updateTopScore(self):
+        if self.score > self.top_score:
+            self.top_score = self.score
+
+    def getTopScore(self):
+        return self.top_score
