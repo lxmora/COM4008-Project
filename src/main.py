@@ -21,6 +21,10 @@ def drawEntities():
         screen.blit(obstacle.image,obstacle.drawbox)
     #screen.fill((0,255,0),balloon.collisionbox,special_flags=1) #collision box visualization
     screen.blit(ui.font.render("Score:"+str(ui.score),True,(0,0,0)),(10,RESOLUTION[1]-(40)))
+     # Display top score on game screen
+    screen.blit(ui.font.render("Top Score: " + str(ui.getTopScore()), True, (0, 0, 0)), (10, RESOLUTION[1] - 60)) 
+
+
 
 # Function to display text on the screen
 def displayText(text, y_pos):
@@ -31,6 +35,8 @@ def displayText(text, y_pos):
 def startScreen():
     screen.fill(BACKGROUNDCOLOR)
     displayText("Press any key to start", RESOLUTION[1]//2)
+      # Display top score on start screen
+    displayText("Top Score: " + str(ui.getTopScore()), RESOLUTION[1] // 2 + 40)
     pygame.display.flip()
     waiting = True
     while waiting:
@@ -44,7 +50,13 @@ def startScreen():
 # Game over screen function
 def gameOverScreen():
     screen.fill(BACKGROUNDCOLOR)
-    displayText("Game Over! Press any key to restart", RESOLUTION[1]//2)
+    # Update the top score if the current score is higher
+    ui.updateTopScore()  
+    displayText("Game Over! Press any key to restart", RESOLUTION[1] // 2)
+    # Display current score
+    displayText("Score: " + str(ui.score), RESOLUTION[1] // 2 + 40) 
+    # Display top score on game over screen 
+    displayText("Top Score: " + str(ui.getTopScore()), RESOLUTION[1] // 2 + 80)  
     pygame.display.flip()
     waiting = True
     while waiting:

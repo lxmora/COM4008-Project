@@ -25,6 +25,18 @@ class UserInterface():
     def updateTopScore(self):
         if self.score > self.top_score:
             self.top_score = self.score
+         # Save the top score to file    
+            self.saveTopScore() 
 
     def getTopScore(self):
         return self.top_score
+    
+    def saveTopScore(self):
+        with open("top_score.txt", "w") as file:
+            file.write(str(self.top_score))
+
+    def loadTopScore(self):
+        if os.path.exists("top_score.txt"):
+            with open("top_score.txt", "r") as file:
+                return int(file.read())
+        return 0
