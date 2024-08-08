@@ -1,6 +1,7 @@
 from constants import *
 import pygame
 import math
+import os
 
 class UserInterface():
     def __init__(self) -> None:
@@ -8,7 +9,7 @@ class UserInterface():
         self.font = pygame.font.SysFont(FONTSTYLE,FONTSIZE)
         self.speed = 0
         # Add a variable to store the top score
-        self.top_score = 0  
+        self.topScore = self.loadTopScore()
 
     def increaseScore(self, ammount : int = DEFAULTSCOREGAIN):
         self.score += ammount
@@ -24,20 +25,21 @@ class UserInterface():
 
 #update top score 
     def updateTopScore(self):
-        if self.score > self.top_score:
-            self.top_score = self.score
+        if self.score > self.topScore:
+            self.topScore = self.score
          # Save the top score to file    
             self.saveTopScore() 
 
     def getTopScore(self):
-        return self.top_score
+        return self.topScore
     
     def saveTopScore(self):
         with open("top_score.txt", "w") as file:
-            file.write(str(self.top_score))
+            file.write(str(self.topScore))
+            file.close()
 
     def loadTopScore(self):
-        if os.path.exists("top_score.txt"):
-            with open("top_score.txt", "r") as file:
-                return int(file.read())
-        return 0
+        with open("top_score.txt", "r") as file:
+           score = int(file.read())
+           file.close()
+           return score
