@@ -7,10 +7,6 @@ class Entity():
         self.collisionbox=collisionbox
         self.image=image
 
-class Wall(Entity):
-    def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect, image):
-        super().__init__(drawbox , collisionbox, image)
-
 class Balloon(Entity):
     def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect, image):
         super().__init__(drawbox , collisionbox, image)
