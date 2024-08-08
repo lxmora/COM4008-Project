@@ -1,6 +1,7 @@
 from constants import *
 import entities
 import pygame
+#import audio_handler
 from user_interface import UserInterface
 
 pygame.init()
@@ -8,6 +9,7 @@ screen = pygame.display.set_mode(RESOLUTION)
 clock = pygame.time.Clock()
 running = True
 ui = UserInterface()
+#audio = audio_handler.AudioHandler()
 
 obstacleTimer = 0
 
