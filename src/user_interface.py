@@ -43,3 +43,4 @@ class UserInterface():
            score = int(file.read())
            file.close()
            return score
+        

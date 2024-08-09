@@ -5,7 +5,7 @@ class Entity():
     def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect, image):
         self.drawbox=drawbox
         self.collisionbox=collisionbox
-        self.image=image
+        self.image=image    
 
 class Balloon(Entity):
     def __init__(self, drawbox : pygame.Rect, collisionbox : pygame.Rect, image):
@@ -20,7 +20,8 @@ class Balloon(Entity):
 
     def updatePosition(self):
         self.collisionbox.x += self.velocity
-        self.velocity *= 0.99
+        if abs(self.velocity) > 2:
+            self.velocity *= VELOCITYDAMPENING
         self.drawbox.update(self.drawbox.clamp(self.collisionbox))
 
 class Obstacle(Entity):

@@ -1,7 +1,7 @@
 from constants import *
 import entities
 import pygame
-#import audio_handler
+import audio_handler
 from user_interface import UserInterface
 
 pygame.init()
@@ -9,7 +9,7 @@ screen = pygame.display.set_mode(RESOLUTION)
 clock = pygame.time.Clock()
 running = True
 ui = UserInterface()
-#audio = audio_handler.AudioHandler()
+audio = audio_handler.AudioHandler()
 
 obstacleTimer = 0
 
@@ -21,12 +21,10 @@ def drawEntities():
     screen.blit(balloon.image,balloon.drawbox)
     for obstacle in obstacles:
         screen.blit(obstacle.image,obstacle.drawbox)
-    #screen.fill((0,255,0),balloon.collisionbox,special_flags=1) #collision box visualization
+   # screen.fill((0,255,0),balloon.collisionbox,special_flags=1) #collision box visualization
     screen.blit(ui.font.render("Score:"+str(ui.score),True,(0,0,0)),(10,RESOLUTION[1]-(40)))
      # Display top score on game screen
     screen.blit(ui.font.render("Top Score: " + str(ui.getTopScore()), True, (0, 0, 0)), (10, RESOLUTION[1] - 60)) 
-
-
 
 # Function to display text on the screen
 def displayText(text, y_pos):
@@ -47,6 +45,7 @@ def startScreen():
                 pygame.quit()
                 exit()
             if event.type == pygame.KEYDOWN:
+                audio.activeBg()
                 waiting = False
 
 # Game over screen function
@@ -68,6 +67,7 @@ def gameOverScreen():
                 exit()
             if event.type == pygame.KEYDOWN:
                 waiting = False
+                audio.activeBg()
                 resetGame()
 
 def resetGame():
@@ -78,6 +78,7 @@ def resetGame():
     balloon = entities.Balloon(pygame.Rect(BALLOONSTARTPOSITION,BALLOONSIZE),pygame.Rect(BALLOONCBOXSTARTPOSITION,BALLOONCBOXSIZE),BALLOONSPRITE)
 
 # Display the start screen
+audio.passiveBg()
 startScreen()
 
 while running:
@@ -86,6 +87,8 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         if event.type == GAMEEND:
+            audio.playPopSound()
+            audio.passiveBg()
             gameOverScreen()
 
 
@@ -93,9 +96,11 @@ while running:
     # Smooth movement handling
     keys = pygame.key.get_pressed()
     if keys[pygame.K_LEFT]:
+        audio.playMoveSound()
         balloon.moveLeft()
     
     if keys[pygame.K_RIGHT]:
+        audio.playMoveSound()
         balloon.moveRight()
 
     #Position Updates
