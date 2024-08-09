@@ -108,6 +108,8 @@ while running:
     balloon.updatePosition()
     for obstacle in obstacles:
         obstacle.updatePosition(ui.speed)
+        if obstacle.drawbox.y > RESOLUTION[1]:
+            del obstacle
 
     #Collison handling
 
@@ -116,6 +118,10 @@ while running:
             pygame.event.post(GAMEENDEVENT)
     if not boundarybox.contains(balloon.collisionbox):
         balloon.velocity *= -1
+        if balloon.collisionbox.x < RESOLUTION[0]/2:
+            balloon.x = 0
+        elif balloon.collisionbox.x > RESOLUTION[0]/2:
+            balloon.x = RESOLUTION[0]-balloon.drawbox.width
 
 
     #Obstacle Generation & Deletion
